@@ -1,0 +1,60 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: legacy-web
+  labels:
+    app: legacy-web
+    imported: "true"
+spec:
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/domain: legacy-web
+        app: legacy-web
+    spec:
+      domain:
+        cpu:
+          cores: 1
+        resources:
+          requests:
+            memory: 1Gi
+        devices:
+          disks:
+            - name: rootdisk
+              disk:
+                bus: virtio
+            - name: cloudinitdisk
+              disk:
+                bus: virtio
+          interfaces:
+            - name: default
+              masquerade: {}
+        machine:
+          type: q35
+      networks:
+        - name: default
+          pod: {}
+      volumes:
+        - name: rootdisk
+          dataVolume:
+            name: legacy-web-rootdisk
+        - name: cloudinitdisk
+          cloudInitNoCloud:
+            userData: |
+              #cloud-config
+              password: Ex156Pass!
+              chpasswd: { expire: False }
+              ssh_pwauth: True
+  dataVolumeTemplates:
+    - metadata:
+        name: legacy-web-rootdisk
+      spec:
+        source:
+          http:
+            url: ${DISK_URL}
+        storage:
+          storageClassName: ${SC}
+          resources:
+            requests:
+              storage: 10Gi

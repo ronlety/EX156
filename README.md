@@ -1,31 +1,48 @@
 # EX156 — Examen de práctica
 
-Simulacro teórico para el **Red Hat Certified Technologist in OpenShift Virtualization (EX156)**.
+Material de estudio para el **Red Hat Certified Technologist in OpenShift Virtualization (EX156)**.
 
-El examen oficial es **práctico** (aprox. 2 horas) sobre OpenShift Container Platform. Este proyecto es un quiz en el navegador para reforzar conceptos alineados a los objetivos públicos y a DO156.
+El examen oficial es **práctico** (~2 horas) sobre OpenShift Container Platform. Este repo incluye:
 
-## Objetivos cubiertos
+1. **Quiz teórico** en el navegador (conceptos)
+2. **Labs hands-on** estilo examen (tareas + soluciones + autocheck)
 
-1. **Crear y gestionar VMs** — consola web y CLI (`oc`, `virtctl`)
-2. **Redes** — redes predefinidas / UDN, VMs multihomed, Services LoadBalancer
-3. **Almacenamiento** — import, snapshots, clones, adjuntar discos (PVC / DataVolume / CDI)
+## Quiz teórico
 
-## Cómo usarlo
-
-Abre `index.html` en el navegador (doble clic o un servidor estático):
+Abre [index.html](index.html) o la página publicada: https://ronlety.github.io/EX156/
 
 ```bash
 python3 -m http.server 8080
 # http://localhost:8080
 ```
 
-- **40 preguntas**, orden aleatorio
-- **90 minutos** sugeridos (el oficial son 2 h hands-on)
-- Aprobado de práctica: **≥ 70%**
-- Al entregar: desglose por dominio + explicación de cada ítem
+- 40 preguntas, orden aleatorio, 90 min, ≥ 70%
+- Dominios: VMs, redes, almacenamiento
 
-Atajos en el examen: `1`–`4` eligen opción, flechas navegan.
+## Labs estilo examen
+
+Ver **[labs/README.md](labs/README.md)**.
+
+| Recurso | Descripción |
+|---------|-------------|
+| [labs/exam-brief.md](labs/exam-brief.md) | Simulacro completo 120 min (100 pts) |
+| [labs/tasks/](labs/tasks/) | 7 labs por skill |
+| [labs/solutions/](labs/solutions/) | Guías de solución (no mirar en simulacro) |
+| [labs/check/](labs/check/) | Scripts `verify-lab.sh` / `verify-all.sh` |
+
+```bash
+# Tras el simulacro:
+./labs/check/verify-all.sh ex156-exam
+```
+
+## Objetivos oficiales (resumen)
+
+1. Crear y gestionar VMs (web y CLI)
+2. Redes: UDN/predefinidas, multihoming, LoadBalancer
+3. Almacenamiento: import, snapshots, clones, adjuntar discos
+
+Preparación recomendada por Red Hat: **DO156**.
 
 ## Aviso
 
-Material no oficial e independiente de Red Hat. No sustituye DO156, laboratorios hands-on ni el examen EX156.
+Material no oficial e independiente de Red Hat. No sustituye cursos, clusters de lab ni el examen EX156.

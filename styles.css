@@ -113,6 +113,17 @@ body {
   font-weight: 600;
 }
 
+.note a.inline-link,
+.inline-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.note a.inline-link:hover {
+  text-decoration: underline;
+}
+
 .cta-row {
   display: flex;
   flex-wrap: wrap;
