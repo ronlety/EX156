@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EX156 — Examen de práctica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <main id="app">
+    <!-- Inicio -->
+    <section id="view-home" class="view view-home">
+      <p class="brand">EX156</p>
+      <h1>Examen de práctica</h1>
+      <p class="lede">
+        Simulacro teórico alineado a los objetivos del Red Hat Certified Technologist
+        in OpenShift Virtualization. El examen oficial es práctico (2 h); esto refuerza
+        conceptos de VMs, redes y almacenamiento en OpenShift Virtualization.
+      </p>
+      <p class="note">
+        Basado en OpenShift Container Platform <strong>4.22</strong> y el temario de
+        <strong>DO156</strong>. No sustituye el examen oficial ni un laboratorio hands-on.
+      </p>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" id="btn-start">Comenzar examen</button>
+        <button type="button" class="btn btn-ghost" id="btn-review-topics">Ver temario</button>
+      </div>
+      <ul class="meta-list">
+        <li><span>Preguntas</span><strong id="meta-count">—</strong></li>
+        <li><span>Tiempo sugerido</span><strong>90 min</strong></li>
+        <li><span>Aprobado</span><strong>≥ 70%</strong></li>
+      </ul>
+    </section>
+
+    <!-- Temario -->
+    <section id="view-topics" class="view view-topics hidden">
+      <button type="button" class="link-back" id="btn-topics-back">← Volver</button>
+      <p class="brand brand-sm">EX156</p>
+      <h2>Objetivos del examen</h2>
+      <ol class="topics">
+        <li>
+          <strong>Crear y gestionar máquinas virtuales</strong>
+          <span>Provisionar y administrar VMs desde la consola web y desde la CLI (oc / virtctl)</span>
+        </li>
+        <li>
+          <strong>Configurar redes de máquinas virtuales</strong>
+          <span>Redes predefinidas y user-defined networks (UDN), VMs multihomed, acceso externo con LoadBalancer</span>
+        </li>
+        <li>
+          <strong>Gestionar almacenamiento de VMs</strong>
+          <span>Importar VMs exportadas, snapshots, clones y adjuntar almacenamiento a VMs</span>
+        </li>
+      </ol>
+      <button type="button" class="btn btn-primary" id="btn-start-from-topics">Comenzar examen</button>
+    </section>
+
+    <!-- Examen -->
+    <section id="view-exam" class="view view-exam hidden">
+      <header class="exam-bar">
+        <div class="exam-bar-left">
+          <span class="brand brand-sm">EX156</span>
+          <span class="progress-label" id="progress-label">1 / 1</span>
+        </div>
+        <div class="exam-bar-right">
+          <span class="timer" id="timer" aria-live="polite">90:00</span>
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-finish-early">Entregar</button>
+        </div>
+      </header>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <article class="question-card" id="question-card">
+        <p class="domain" id="q-domain"></p>
+        <h2 class="q-text" id="q-text"></h2>
+        <pre class="q-code hidden" id="q-code"></pre>
+        <div class="options" id="q-options" role="listbox" aria-label="Opciones"></div>
+      </article>
+
+      <footer class="exam-nav">
+        <button type="button" class="btn btn-ghost" id="btn-prev" disabled>Anterior</button>
+        <button type="button" class="btn btn-primary" id="btn-next">Siguiente</button>
+      </footer>
+    </section>
+
+    <!-- Resultados -->
+    <section id="view-results" class="view view-results hidden">
+      <p class="brand">EX156</p>
+      <h2 id="result-title">Resultados</h2>
+      <p class="score-line">
+        <span class="score" id="score-pct">0%</span>
+        <span class="score-detail" id="score-detail"></span>
+      </p>
+      <p class="verdict" id="verdict"></p>
+      <div class="domain-scores" id="domain-scores"></div>
+      <div class="review-list" id="review-list"></div>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" id="btn-retry">Reintentar</button>
+        <button type="button" class="btn btn-ghost" id="btn-home">Inicio</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
